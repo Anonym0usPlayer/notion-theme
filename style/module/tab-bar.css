@@ -164,6 +164,13 @@ body:not(.body--mobile,.body--toolbar-hide) .layout__center .fn__flex-column>.fn
         }
     }
 }
+/* 非融合模式下思源给标签栏右侧操作区默认 -8px（紧凑模式 -7px）的左外边距，
+   使「新建文档」按钮贴住并压到最后一个标签的右边缘。这里改为留出正常间距；
+   融合模式（body--toolbar-hide）、垂直页签（savor-tabbar）与移动端保持原生布局不变。 */
+:root:not([savor-tabbar]) body:not(.body--toolbar-hide,.body--mobile) .layout__center .fn__flex-column>.fn__flex>.layout-tab-bar--readonly {
+    margin-left: 2px;
+}
+
 .body--toolbar-hide .layout__center .fn__flex-column>.fn__flex>.layout-tab-bar {
     background-color: transparent;
    .item:not(.item--readonly):hover,.item:not(.item--readonly).item--focus{

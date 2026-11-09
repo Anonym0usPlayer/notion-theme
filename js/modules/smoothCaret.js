@@ -2,6 +2,7 @@
 let smoothCaretActive = false;
 let caretElement = null;
 let frameId = null;
+let layerObserver = null;
 
 const findTextNode = (node, fromEnd = false) => {
     if (!node) return null;
@@ -83,6 +84,17 @@ const getEmptyInlineCaretRect = (element) => {
     };
 };
 
+// 折叠 Range 落在块边界时会返回覆盖整个块的矩形（代码块顶部、空容器等），
+// 直接采用会把插入符拉成一条贯穿整块的长竖线。以所在行的行高为基准做尺寸校验。
+const isCaretSizedRect = (rect, element) => {
+    if (!rect || !(rect.height > 0)) return false;
+    const style = getComputedStyle(element);
+    const lineHeight = Number.parseFloat(style.lineHeight);
+    const fontSize = Number.parseFloat(style.fontSize) || 16;
+    const line = Number.isFinite(lineHeight) && lineHeight > 0 ? lineHeight : fontSize * 1.5;
+    return rect.width <= Math.max(4, line * 0.6) && rect.height <= line * 1.8 + 2;
+};
+
 const getCaretInfo = () => {
     const selection = window.getSelection();
     if (!selection?.rangeCount || !selection.isCollapsed) return null;
@@ -90,6 +102,11 @@ const getCaretInfo = () => {
     const node = range.startContainer;
     const element = node?.nodeType === Node.ELEMENT_NODE ? node : node?.parentElement;
     if (!element?.closest?.('.protyle-wysiwyg[contenteditable="true"]')) return null;
+
+    // 代码块顶部工具栏、块标、块属性等 contenteditable="false" 区域并非可输入位置，
+    // 但点击它们时浏览器仍会把选区落在其中的文本节点上，不能据此绘制插入符。
+    const editableHost = element.closest('[contenteditable]');
+    if (editableHost && editableHost.getAttribute('contenteditable') !== 'true') return null;
 
     // 分割线节点的 Range 会覆盖整个块，不能直接作为插入符矩形使用。
     const thematicBreak = element.closest('[data-type="NodeThematicBreak"]');
@@ -110,13 +127,17 @@ const getCaretInfo = () => {
 
     // 折叠 Range 在行内元素边界可能返回整行行首的伪矩形。相邻字符的边缘
     // 更接近浏览器原生插入符，并且能覆盖 Alt+G 改写出的 code/span 容器边界。
-    const rect = range.getBoundingClientRect();
-    const caretRect = getTextCaretRect(range)
-        || getEmptyInlineCaretRect(element)
-        || (rect.height > 0 ? rect : Array.from(range.getClientRects()).find(item => item.height > 0));
+    // 所有候选矩形统一做单行尺寸校验，块级矩形一律交给下方的空块兜底处理。
+    const candidates = [
+        getTextCaretRect(range),
+        getEmptyInlineCaretRect(element),
+        range.getBoundingClientRect(),
+        ...Array.from(range.getClientRects())
+    ];
+    const caretRect = candidates.find(item => isCaretSizedRect(item, element));
     if (caretRect) return { rect: caretRect, color: getComputedStyle(element).color };
 
-    // 空块没有文本矩形，优先使用内部 spellcheck 行，避免外层块的边距影响位置。
+    // 空块或异常矩形：优先使用内部 spellcheck 行，避免外层块的边距影响位置。
     // 表格空单元格：spellcheck 可能命中单元格外的表格容器，需以 td/th 为界，否则光标会落到表格左上角。
     const cell = element.closest('td, th');
     let line = element.closest('[spellcheck]');
@@ -130,21 +151,50 @@ const getCaretInfo = () => {
     if (lineRect.height <= 0) return null;
     const style = getComputedStyle(line);
     const lineHeight = Number.parseFloat(style.lineHeight);
+    const height = Number.isFinite(lineHeight) && lineHeight > 0
+        ? lineHeight
+        : (Number.parseFloat(style.fontSize) || 16) * 1.5;
+    // 兜底命中了整个编辑器或多行容器时，左上角并非真实插入符位置，直接隐藏。
+    if (lineRect.height > height * 2.5) return null;
     return {
         rect: {
             left: lineRect.left + Number.parseFloat(style.paddingLeft || 0),
             top: lineRect.top + Number.parseFloat(style.paddingTop || 0),
-            height: Number.isFinite(lineHeight) ? lineHeight : lineRect.height
+            height
         },
         color: style.color
     };
+};
+
+// 菜单、联想框、浮动工具条等打开时不应继续绘制插入符，否则高层级覆盖层会
+// 盖在菜单选项文字上。浮层隐藏方式不统一（fn__none / display:none / 直接移除），
+// 因此以实际渲染矩形为准判断可见性。
+const FLOATING_SELECTOR = [
+    '#commonMenu',
+    '.b3-menu',
+    '.hint--menu',
+    '.protyle-hint',
+    '.protyle-toolbar',
+    '.protyle-util',
+    '.b3-dialog--open'
+].join(',');
+
+const hasFloatingLayer = () => {
+    for (const layer of document.querySelectorAll(FLOATING_SELECTOR)) {
+        if (layer.classList.contains('fn__none')) continue;
+        const style = getComputedStyle(layer);
+        if (style.display === 'none' || style.visibility === 'hidden'
+            || Number.parseFloat(style.opacity) === 0) continue;
+        if (layer.getClientRects().length) return true;
+    }
+    return false;
 };
 
 const hideCaret = () => caretElement?.classList.remove('savor-smooth-caret--visible');
 
 const updateCaret = () => {
     frameId = null;
-    if (!smoothCaretActive || document.hidden || !document.hasFocus()) return hideCaret();
+    if (!smoothCaretActive || document.hidden || !document.hasFocus() || hasFloatingLayer()) return hideCaret();
     const caret = getCaretInfo();
     if (!caret) return hideCaret();
     caretElement.style.height = `${Math.max(1, caret.rect.height)}px`;
@@ -173,6 +223,14 @@ export const enableSmoothCaret = () => {
     document.addEventListener('visibilitychange', scheduleUpdate);
     window.addEventListener('resize', scheduleUpdate);
     window.addEventListener('scroll', scheduleUpdate, true);
+    document.addEventListener('pointerdown', scheduleUpdate, true);
+    document.addEventListener('keydown', scheduleUpdate, true);
+    // 菜单、对话框等浮层由思源动态挂载到 body，监听直接子节点增删即可及时收起插入符，
+    // 不开启 subtree 以免编辑器内的高频 DOM 变化触发回调。
+    if (typeof MutationObserver === 'function') {
+        layerObserver = new MutationObserver(scheduleUpdate);
+        layerObserver.observe(document.body, { childList: true });
+    }
     scheduleUpdate();
 };
 
@@ -188,6 +246,10 @@ export const disableSmoothCaret = () => {
     document.removeEventListener('visibilitychange', scheduleUpdate);
     window.removeEventListener('resize', scheduleUpdate);
     window.removeEventListener('scroll', scheduleUpdate, true);
+    document.removeEventListener('pointerdown', scheduleUpdate, true);
+    document.removeEventListener('keydown', scheduleUpdate, true);
+    layerObserver?.disconnect();
+    layerObserver = null;
     document.documentElement.removeAttribute('savor-smooth-caret');
     caretElement?.remove();
     caretElement = null;

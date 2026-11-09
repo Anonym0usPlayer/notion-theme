@@ -1063,8 +1063,11 @@ body:not(.body--mobile,.body--window,.body--toolbar-hide) #layouts{
 }
 
 /* 平滑光标：原生插入符不可过渡，使用覆盖层提供短距离平移动画。 */
-:root[savor-smooth-caret="true"] .protyle-wysiwyg[contenteditable="true"] { caret-color: transparent; }
-.savor-smooth-caret { position: fixed; z-index: 9999; width: 2px; left: 0; top: 0; pointer-events: none; opacity: 0; border-radius: 1px; background: var(--b3-theme-primary, var(--b3-theme-on-background)); transform: translate3d(-9999px, -9999px, 0); transition: transform 180ms cubic-bezier(.16, 1, .3, 1), opacity 100ms ease; will-change: transform; }
+/* 代码块等自带 contenteditable 的区域可能另行声明 caret-color，仅靠继承无法隐藏原生插入符。 */
+:root[savor-smooth-caret="true"] .protyle-wysiwyg[contenteditable="true"],
+:root[savor-smooth-caret="true"] .protyle-wysiwyg[contenteditable="true"] :is([contenteditable], .hljs, .hljs *) { caret-color: transparent; }
+/* 覆盖层挂在 body 上，层级需低于菜单、联想框、对话框等浮层，避免盖住菜单选项。 */
+.savor-smooth-caret { position: fixed; z-index: 100; width: 2px; left: 0; top: 0; pointer-events: none; opacity: 0; border-radius: 1px; background: var(--b3-theme-primary, var(--b3-theme-on-background)); transform: translate3d(-9999px, -9999px, 0); transition: transform 180ms cubic-bezier(.16, 1, .3, 1), opacity 100ms ease; will-change: transform; }
 .savor-smooth-caret--visible { opacity: 1; animation: savor-smooth-caret-breathe 2s ease-in-out infinite; }
 @keyframes savor-smooth-caret-breathe { 0%, 100% { opacity: 1; } 50% { opacity: .1; } }
 @media (prefers-reduced-motion: reduce) { .savor-smooth-caret { transition: none; } .savor-smooth-caret--visible { animation: none; } }
