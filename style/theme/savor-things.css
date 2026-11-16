@@ -1,0 +1,139 @@
+/* Things · Cultured Code Things 3 配色
+   浅色取 Things 浅色界面（近白纸面 + iOS 浅灰面板 + Things 蓝 #4a78d6），
+   深色取 Things 深色界面（#1c1c1e 纸面 + #2c2c2e 卡片面板 + 同款蓝）。
+   明暗两个作用域共用 savor-theme="things"，由 data-theme-mode 区分。 */
+:root[data-theme-mode="light"][savor-theme="things"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:58.7%;
+    --b3-theme-primary-base-ch:0.1527 262.93;
+    --b3-theme-surface-base-l:0.9626;
+    --b3-theme-surface-base-ch:0.0066 286.27;
+    --b3-theme-on-background-base:29.39% 0.0036 286.18;
+    --Sv-dock-item--activefocus-background--base:58.7% 0.1527 262.93;
+
+    /* 编辑区：近白冷纸（必须用 HEX 颜色） */
+    --b3-theme-background: #fbfbfd;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Things 蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #fbfbfd;
+    --b3-body-background-hl: 220, 63%, 57%;
+    --b3-body-background-hl-opacity: 0.16;
+
+    /* 面板 / 对话框 / 菜单：iOS grouped 灰 */
+    --Sv--dialog-container: #f2f2f7;
+    --Sv-plugin-off-bg: #ebebf1;
+    --Sv-menu-background: #ffffff;
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Things 蓝 */
+    --Sv-barWorkspace-background: #4a78d6;
+    --Sv-barWorkspace-background-hover: #3f68bd;
+
+    /* 代码块与行内代码 */
+    --Sv-code-block-background: #f3f3f7;
+    --Sv-inline-code: #b04a42;
+    --b3-highlight-background: #fff3b0;
+    --b3-highlight-current-background: #f5c451;
+
+    /* 标签栏圆角 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23ebebf1'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ebebf1'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23ebebf1'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%23fbfbfd'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23fbfbfd'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%23fbfbfd'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23fbfbfd'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23fbfbfd'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23fbfbfd'/></svg>");
+
+    /* 文字标注底色：冷调淡色 */
+    --b3-font-background1: #dfe1e6;
+    --b3-font-background2: #eceef3;
+    --b3-font-background3: #f3d7d9;
+    --b3-font-background4: #e4e6eb;
+    --b3-font-background5: #f1e5d3;
+    --b3-font-background6: #f4e1d5;
+    --b3-font-background7: #f1ecd7;
+    --b3-font-background8: #dfedda;
+    --b3-font-background9: #d8e9e6;
+    --b3-font-background10: #d7e6f6;
+    --b3-font-background11: #e1e1ee;
+    --b3-font-background12: #ecdce6;
+    --b3-font-background13: #f3dcdc;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }}
+
+:root[data-theme-mode="dark"][savor-theme="things"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:58.7%;
+    --b3-theme-primary-base-ch:0.1527 262.93;
+    --b3-theme-surface-base-l:0.2939;
+    --b3-theme-surface-base-ch:0.0036 286.18;
+    --b3-theme-on-background-base:93.27% 0.008 286.24;
+    --Sv-dock-item--activefocus-background--base:58.7% 0.1527 262.93;
+
+    /* 编辑区：iOS systemBackground（必须用 HEX 颜色） */
+    --b3-theme-background: #1c1c1e;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Things 蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #1c1c1e;
+    --b3-body-background-hl: 220, 63%, 57%;
+    --b3-body-background-hl-opacity: 0.3;
+
+    /* 面板 / 对话框 / 菜单：iOS secondarySystem 略亮于纸面 */
+    --Sv--dialog-container: #2c2c2e;
+    --Sv-plugin-off-bg: #242427;
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Things 蓝 */
+    --Sv-barWorkspace-background: #4a78d6;
+    --Sv-barWorkspace-background-hover: #3f68bd;
+
+    /* 代码块与行内代码 */
+    --Sv-code-block-background: #242427;
+    --Sv-inline-code: #e0705f;
+
+    /* 标签栏圆角 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23242427'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23242427'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23242427'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%231c1c1e'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%231c1c1e'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%231c1c1e'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%231c1c1e'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%231c1c1e'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%231c1c1e'/></svg>");
+
+    /* 文字标注底色：中性深色块 */
+    --b3-font-background1: #3a3a3c;
+    --b3-font-background2: #2c2c2e;
+    --b3-font-background3: #4a3033;
+    --b3-font-background4: #39393d;
+    --b3-font-background5: #4e3f30;
+    --b3-font-background6: #4e4730;
+    --b3-font-background7: #4e4e30;
+    --b3-font-background8: #2a4a3c;
+    --b3-font-background9: #274752;
+    --b3-font-background10: #274052;
+    --b3-font-background11: #363353;
+    --b3-font-background12: #4a3048;
+    --b3-font-background13: #4d3336;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }
+}

@@ -1,0 +1,172 @@
+/* VSCode · 浅色编辑器配色
+   还原 VS Code Light+ / Light Modern 的标志性观感：纯白编辑区、中性灰侧栏、
+   经典 #007acc 蓝（状态栏 / 激活态 / 链接）、中性深灰正文。
+   代码块沿用思源内置 Visual Studio 浅色语法高亮（与 Light+ 同源），
+   仅在本配色下生效，切换其他配色后自动交还原生高亮主题。 */
+:root[data-theme-mode="light"][savor-theme="vscode"] {
+    /* 基础数：#007acc 与 #3b3b3b / #f3f3f3 的 OKLCH 换算值 */
+    --b3-theme-primary-base-l:56.7%;
+    --b3-theme-primary-base-ch:0.1546 248.52;
+    --b3-theme-surface-base-l:0.9642;
+    --b3-theme-surface-base-ch:0 0;
+    --b3-theme-on-background-base:35.23% 0.002 250;
+    --Sv-dock-item--activefocus-background--base:56.7% 0.1546 248.52;
+
+    /* 编辑区：VS Code 纯白（必须用 HEX 颜色） */
+    --b3-theme-background: #ffffff;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用经典 VS Code 蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #ffffff;
+    --b3-body-background-hl: 204, 100%, 40%;
+    --b3-body-background-hl-opacity: 0.16;
+
+    /* 侧栏 / 菜单 / 对话框：VS Code 中性浅灰 */
+    --Sv--dialog-container: #f3f3f3;
+    --Sv-plugin-off-bg: #ececec;
+    --Sv-menu-background: #ffffff;
+
+    /* 顶栏工作区、状态栏与 dock 激活态：经典 VS Code 蓝 */
+    --Sv-barWorkspace-background: #007acc;
+    --Sv-barWorkspace-background-hover: #0062a8;
+
+    /* 代码块：略深于编辑区，贴近 VS Code 的编辑面 */
+    --Sv-code-block-background: #f7f7f7;
+
+    /* 行内代码用 VS Code 字符串红，搜索高亮用柔和杏黄 */
+    --Sv-inline-code: #a31515;
+    --b3-highlight-background: #fff3b0;
+    --b3-highlight-current-background: #f5c451;
+
+    /* 标签栏圆角：未激活页签为 VS Code 灰，激活页签与白色编辑区连成一体 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23ececec'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ececec'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23ececec'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%23ffffff'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23ffffff'/></svg>");
+
+    /* 文字标注底色：冷调中性色，和蓝灰界面保持一致 */
+    --b3-font-background1: #dcdfe3;
+    --b3-font-background2: #eceef1;
+    --b3-font-background3: #f2dadd;
+    --b3-font-background4: #e3e5e8;
+    --b3-font-background5: #f1e6d4;
+    --b3-font-background6: #f5e2d6;
+    --b3-font-background7: #f2edd8;
+    --b3-font-background8: #e0eede;
+    --b3-font-background9: #d9eae9;
+    --b3-font-background10: #d6e7f7;
+    --b3-font-background11: #e2e2ef;
+    --b3-font-background12: #ecdde7;
+    --b3-font-background13: #f4dede;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }}
+
+/* 代码块语法高亮：VS Code Light+ 经典配色（关键字蓝、字符串红、注释绿）。
+   作用域限定在 VSCode 配色内，不影响用户为其他配色选择的高亮主题。 */
+:root[data-theme-mode="light"][savor-theme="vscode"] .hljs { color: #3b3b3b; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-comment,.hljs-quote,.hljs-doctag) { color: #008000; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-built_in,.hljs-keyword,.hljs-selector-tag,.hljs-literal) { color: #0000ff; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-addition,.hljs-attribute,.hljs-section,.hljs-string,.hljs-regexp,.hljs-template-tag) { color: #a31515; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-number,.hljs-symbol,.hljs-bullet,.hljs-link) { color: #098658; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-title,.hljs-title.function_) { color: #795e26; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-type,.hljs-class .hljs-title) { color: #267f99; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-variable,.hljs-params,.hljs-template-variable) { color: #001080; }
+:root[data-theme-mode="light"][savor-theme="vscode"] .hljs-attr { color: #e50000; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-tag,.hljs-name) { color: #800000; }
+:root[data-theme-mode="light"][savor-theme="vscode"] :is(.hljs-meta,.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo) { color: #2b91af; }
+
+/* VSCode · 深色编辑器配色（Dark Modern）
+   #1f1f1f 纸面 + #181818 侧栏 + #0078d4 强调蓝 + #cccccc 正文。 */
+:root[data-theme-mode="dark"][savor-theme="vscode"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:56.77%;
+    --b3-theme-primary-base-ch:0.1665 251.31;
+    --b3-theme-surface-base-l:0.209;
+    --b3-theme-surface-base-ch:0 0;
+    --b3-theme-on-background-base:84.52% 0 0;
+    --Sv-dock-item--activefocus-background--base:56.77% 0.1665 251.31;
+
+    /* 编辑区：Dark Modern editor.background（必须用 HEX 颜色） */
+    --b3-theme-background: #1f1f1f;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Dark Modern accent 蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #1f1f1f;
+    --b3-body-background-hl: 206, 100%, 42%;
+    --b3-body-background-hl-opacity: 0.3;
+
+    /* 面板 / 对话框 / 菜单：侧栏与命令面板比编辑区更深 */
+    --Sv--dialog-container: #252526;
+    --Sv-plugin-off-bg: #181818;
+    --Sv-menu-background: #252526;
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Dark Modern accent 蓝 */
+    --Sv-barWorkspace-background: #0078d4;
+    --Sv-barWorkspace-background-hover: #0062a8;
+
+    /* 代码块与行内代码 */
+    --Sv-code-block-background: #1a1a1a;
+    --Sv-inline-code: #ce9178;
+
+    /* 标签栏圆角 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23181818'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23181818'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23181818'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%231f1f1f'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%231f1f1f'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%231f1f1f'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%231f1f1f'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%231f1f1f'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%231f1f1f'/></svg>");
+
+    /* 文字标注底色：中性深色块 */
+    --b3-font-background1: #3a3a3c;
+    --b3-font-background2: #2c2c2e;
+    --b3-font-background3: #4a3033;
+    --b3-font-background4: #39393d;
+    --b3-font-background5: #4e3f30;
+    --b3-font-background6: #4e4730;
+    --b3-font-background7: #4e4e30;
+    --b3-font-background8: #2a4a3c;
+    --b3-font-background9: #274752;
+    --b3-font-background10: #274052;
+    --b3-font-background11: #363353;
+    --b3-font-background12: #4a3048;
+    --b3-font-background13: #4d3336;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }
+}
+
+/* 代码块语法高亮：VS Code Dark+ 经典配色，仅深色 VSCode 生效 */
+:root[data-theme-mode="dark"][savor-theme="vscode"] .hljs { color: #cccccc; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-comment,.hljs-quote,.hljs-doctag) { color: #6a9955; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-keyword,.hljs-selector-tag,.hljs-literal) { color: #c586c0; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-built_in,.hljs-type,.hljs-class .hljs-title) { color: #4ec9b0; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-template-tag) { color: #ce9178; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-number,.hljs-symbol,.hljs-bullet,.hljs-link) { color: #b5cea8; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-title,.hljs-title.function_) { color: #dcdcaa; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-variable,.hljs-params,.hljs-template-variable) { color: #9cdcfe; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] .hljs-attr { color: #9cdcfe; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-tag,.hljs-name) { color: #569cd6; }
+:root[data-theme-mode="dark"][savor-theme="vscode"] :is(.hljs-meta,.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo) { color: #d7ba7d; }

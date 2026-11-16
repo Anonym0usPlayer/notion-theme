@@ -1,0 +1,154 @@
+/* Nord · 官方 Nord 色板配色
+   浅色取 Nord Snow Storm（#eceff4 纸面 + #2e3440 正文 + #5e81ac 冰川蓝），
+   深色取 Nord Polar Night（#2e3440 纸面 + #d8dee9 雪文 + #88c0d0 冰蓝），
+   深色块沿用 Nord 官方语法高亮（关键字 #81a1c1、字符串 #a3be8c、注释 #616e88）。
+   明暗两个作用域共用 savor-theme="nord"，由 data-theme-mode 区分。 */
+:root[data-theme-mode="light"][savor-theme="nord"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:59.44%;
+    --b3-theme-primary-base-ch:0.0772 254.03;
+    --b3-theme-surface-base-l:0.933;
+    --b3-theme-surface-base-ch:0.0104 261.79;
+    --b3-theme-on-background-base:32.44% 0.0229 264.18;
+    --Sv-dock-item--activefocus-background--base:59.44% 0.0772 254.03;
+
+    /* 编辑区：Nord6 雪白（必须用 HEX 颜色） */
+    --b3-theme-background: #eceff4;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Nord9 冰蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #eceff4;
+    --b3-body-background-hl: 210, 34%, 63%;
+    --b3-body-background-hl-opacity: 0.16;
+
+    /* 面板 / 对话框 / 菜单 */
+    --Sv--dialog-container: #e5e9f0;
+    --Sv-plugin-off-bg: #dfe3ea;
+    --Sv-menu-background: oklch(calc(var(--b3-theme-surface-base-l)*1.02) var(--b3-theme-surface-base-ch));
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Nord10 冰川蓝 */
+    --Sv-barWorkspace-background: #5e81ac;
+    --Sv-barWorkspace-background-hover: #52709a;
+
+    /* 代码块与行内代码 */
+    --Sv-code-block-background: #e7ebf1;
+    --Sv-inline-code: #b04a52;
+    --b3-highlight-background: #efe0b6;
+    --b3-highlight-current-background: #e4c58a;
+
+    /* 标签栏圆角 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23dfe3ea'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23dfe3ea'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23dfe3ea'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%23eceff4'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23eceff4'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%23eceff4'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23eceff4'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23eceff4'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23eceff4'/></svg>");
+
+    /* 文字标注底色：Snow Storm 基调 + 极光色淡化 */
+    --b3-font-background1: #d8dee9;
+    --b3-font-background2: #e5e9f0;
+    --b3-font-background3: #ead3d6;
+    --b3-font-background4: #dde1e7;
+    --b3-font-background5: #ecdcc8;
+    --b3-font-background6: #eee2cc;
+    --b3-font-background7: #ede8cf;
+    --b3-font-background8: #dbe6d5;
+    --b3-font-background9: #d5e2e5;
+    --b3-font-background10: #d3e0e8;
+    --b3-font-background11: #ded5ea;
+    --b3-font-background12: #ebd6e3;
+    --b3-font-background13: #ecd8d5;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }}
+
+:root[data-theme-mode="dark"][savor-theme="nord"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:77.46%;
+    --b3-theme-primary-base-ch:0.0622 217.47;
+    --b3-theme-surface-base-l:0.3792;
+    --b3-theme-surface-base-ch:0.029 266.47;
+    --b3-theme-on-background-base:89.93% 0.0164 262.75;
+    --Sv-dock-item--activefocus-background--base:77.46% 0.0622 217.47;
+
+    /* 编辑区：Nord0 极夜（必须用 HEX 颜色） */
+    --b3-theme-background: #2e3440;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Nord9 冰蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #2e3440;
+    --b3-body-background-hl: 210, 34%, 63%;
+    --b3-body-background-hl-opacity: 0.3;
+
+    /* 面板 / 对话框 / 菜单：Nord1 按官方惯例略亮于编辑区 */
+    --Sv--dialog-container: #3b4252;
+    --Sv-plugin-off-bg: #2b313c;
+    --Sv-menu-background: oklch(calc(var(--b3-theme-surface-base-l)*1) var(--b3-theme-surface-base-ch));
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Nord9 冰蓝 */
+    --Sv-barWorkspace-background: #81a1c1;
+    --Sv-barWorkspace-background-hover: #6d94b8;
+
+    /* 代码块：Nord1，与官方编辑器主题一致 */
+    --Sv-code-block-background: #3b4252;
+    --Sv-inline-code: #d08770;
+
+    /* 标签栏圆角 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%232b313c'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%232b313c'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%232b313c'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%232e3440'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%232e3440'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%232e3440'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%232e3440'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%232e3440'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%232e3440'/></svg>");
+
+    /* 文字标注底色：Polar Night 基调 + 极光色压暗 */
+    --b3-font-background1: #3b4252;
+    --b3-font-background2: #333a46;
+    --b3-font-background3: #4e363b;
+    --b3-font-background4: #3e4550;
+    --b3-font-background5: #4c4438;
+    --b3-font-background6: #4e4a38;
+    --b3-font-background7: #4c4c3a;
+    --b3-font-background8: #3b4b41;
+    --b3-font-background9: #37474f;
+    --b3-font-background10: #37475a;
+    --b3-font-background11: #443b57;
+    --b3-font-background12: #4e3b49;
+    --b3-font-background13: #543b40;
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }
+}
+
+/* 代码块语法高亮：Nord 官方配色，仅深色 Nord 生效 */
+:root[data-theme-mode="dark"][savor-theme="nord"] .hljs { color: #d8dee9; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-comment,.hljs-quote) { color: #616e88; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-keyword,.hljs-selector-tag,.hljs-literal) { color: #81a1c1; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-built_in,.hljs-type,.hljs-class .hljs-title) { color: #8fbcbb; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-template-tag) { color: #a3be8c; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-number,.hljs-symbol,.hljs-bullet) { color: #b48eab; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-title,.hljs-title.function_,.hljs-link,.hljs-section) { color: #88c0d0; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-variable,.hljs-params,.hljs-template-variable) { color: #d8dee9; }
+:root[data-theme-mode="dark"][savor-theme="nord"] .hljs-attr { color: #8fbcbb; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-tag,.hljs-name) { color: #81a1c1; }
+:root[data-theme-mode="dark"][savor-theme="nord"] :is(.hljs-meta,.hljs-deletion,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-doctag) { color: #bf616a; }
