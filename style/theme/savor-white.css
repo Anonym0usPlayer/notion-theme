@@ -29,6 +29,20 @@
     --Sv-barWorkspace-background: #2383e2;
     --Sv-barWorkspace-background-hover: #1e73c8;
 
+    /* 卡片式布局：侧边栏与编辑器同为纯白，层次交给卡片——
+       内容卡片（.layout__center>.fn__flex）圆角 16px（全局默认），
+       侧栏卡片（.layout__dockl/r/b>.fn__flex）圆角 16px（shrink.css）；
+       两个阴影变量全局默认为「纸面色 0.5px 描边 + 5% 投影」，纯白底上完全不可见，
+       统一强化为深灰描边 + 双层投影，让卡片在纯白底上浮起 */
+    --Sv-main-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.07),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.08);
+    --Sv-dock-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.07),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        0 8px 20px rgba(0, 0, 0, 0.08);
+
     /* 代码块与行内代码：Notion 暖灰代码块、字符串红行内码 */
     --Sv-code-block-background: #f7f6f3;
     --Sv-inline-code: #d0453e;
