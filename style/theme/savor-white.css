@@ -30,10 +30,8 @@
     --Sv-barWorkspace-background-hover: #1e73c8;
 
     /* 卡片式布局：侧边栏与编辑器同为纯白，层次交给卡片——
-       内容卡片（.layout__center>.fn__flex）圆角 16px（全局默认），
-       侧栏卡片（.layout__dockl/r/b>.fn__flex）圆角 16px（shrink.css）；
-       两个阴影变量全局默认为「纸面色 0.5px 描边 + 5% 投影」，纯白底上完全不可见，
-       统一强化为深灰描边 + 双层投影，让卡片在纯白底上浮起 */
+       编辑器主卡片与侧栏卡片均带深灰描边框线 + 双层投影，
+       两个变量全局默认均为「面色 0.5px 描边 + 5% 投影」，纯白底上不可见 */
     --Sv-main-shadow:
         0 0 0 1px rgba(0, 0, 0, 0.07),
         0 1px 3px rgba(0, 0, 0, 0.08),
@@ -42,6 +40,16 @@
         0 0 0 1px rgba(0, 0, 0, 0.07),
         0 1px 3px rgba(0, 0, 0, 0.08),
         0 8px 20px rgba(0, 0, 0, 0.08);
+
+    /* 卡片全局 margin 为 0 2px 8px，顶部无间隙，1px 顶部描边被上边界压住无法显现；
+       给编辑区卡片留出 2px 顶部间隙（默认模式卡片为 .fn__flex，融合模式为 .layout-tab-container） */
+    body:not(.body--mobile,.body--window,.body--toolbar-hide) #layouts .layout__center>.fn__flex,
+    body:not(.body--mobile,.body--window,.body--toolbar-hide) #layouts .layout__center>.fn__flex-column>.fn__flex {
+        margin-top: 2px;
+    }
+    .body--toolbar-hide #layouts .layout__center .layout-tab-container {
+        margin-top: 2px;
+    }
 
     /* 代码块与行内代码：Notion 暖灰代码块、字符串红行内码 */
     --Sv-code-block-background: #f7f6f3;
