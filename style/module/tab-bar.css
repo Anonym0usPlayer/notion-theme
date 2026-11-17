@@ -1,4 +1,15 @@
 /* ———————————————————页签———————————————————— */
+/* 页签背景透明（所有配色生效）：覆盖思源原生页签底色
+   （hover = --b3-theme-surface、focus = --b3-theme-surface-light、
+   窗口激活 focus = --b3-theme-primary-lightest、失焦 body--blur focus = surface-light）。
+   激活页签保留原生的 inset 描边以便辨识当前页签 */
+.layout-tab-bar .item,
+.layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+.layout-tab-bar .item--focus,
+.layout__wnd--active .layout-tab-bar .item--focus,
+body.body--blur .layout__wnd--active .layout-tab-bar .item--focus {
+    background-color: transparent;
+}
 @property --mask-stop-start {
     syntax: "<length>";
     inherits: false;
@@ -174,7 +185,7 @@ body:not(.body--mobile,.body--toolbar-hide) .layout__center .fn__flex-column>.fn
 .body--toolbar-hide .layout__center .fn__flex-column>.fn__flex>.layout-tab-bar {
     background-color: transparent;
    .item:not(.item--readonly):hover,.item:not(.item--readonly).item--focus{
-        background-color: var(--Sv-tab-bar-item-background-focus);
+        background-color: transparent;
     }
 }
 .layout-tab-bars--drag>.layout-tab-bar{
