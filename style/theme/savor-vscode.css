@@ -64,6 +64,14 @@
     --b3-font-background12: #ecdde7;
     --b3-font-background13: #f4dede;
 
+    /* 页签透明：覆盖思源原生页签底色（hover surface / focus surface-light / 主色淡底） */
+    .layout-tab-bar .item,
+    .layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+    .layout-tab-bar .item--focus,
+    .layout__wnd--active .layout-tab-bar .item--focus {
+        background-color: transparent;
+    }
+
     /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
     body {
         background-image: var(--b3-window-background-image);
@@ -72,7 +80,8 @@
     /* 关闭 Wind 配色的纸张纹理叠加 */
     body::before {
         display: none;
-    }}
+    }
+}
 
 /* 代码块语法高亮：VS Code Light+ 经典配色（关键字蓝、字符串红、注释绿）。
    作用域限定在 VSCode 配色内，不影响用户为其他配色选择的高亮主题。 */
@@ -146,6 +155,14 @@
     --b3-font-background11: #363353;
     --b3-font-background12: #4a3048;
     --b3-font-background13: #4d3336;
+
+    /* 页签透明：覆盖思源原生页签底色（hover surface / focus surface-light / 主色淡底） */
+    .layout-tab-bar .item,
+    .layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+    .layout-tab-bar .item--focus,
+    .layout__wnd--active .layout-tab-bar .item--focus {
+        background-color: transparent;
+    }
 
     /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
     body {

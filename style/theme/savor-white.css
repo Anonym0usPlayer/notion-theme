@@ -1,0 +1,81 @@
+/* White · 纯白极简配色（Notion 风格）
+   侧边栏与编辑器同为纯白 #ffffff，层次完全依靠边框、阴影与页签圆角；
+   暖黑正文 #37352f，Notion 蓝 #2383e2 作为强调色。
+   支持思源「背景渐变」，回退光晕为 Notion 蓝。 */
+:root[data-theme-mode="light"][savor-theme="white"] {
+    /* 基础数 */
+    --b3-theme-primary-base-l:60.58%;
+    --b3-theme-primary-base-ch:0.1674 252.7;
+    --b3-theme-surface-base-l:1;
+    --b3-theme-surface-base-ch:0 0;
+    --b3-theme-on-background-base:32.89% 0.0107 91.66;
+    --Sv-dock-item--activefocus-background--base:60.58% 0.1674 252.7;
+
+    /* 编辑区：纯白（必须用 HEX 颜色） */
+    --b3-theme-background: #ffffff;
+
+    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Notion 蓝；
+       自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
+    --b3-body-background: #ffffff;
+    --b3-body-background-hl: 210, 77%, 51%;
+    --b3-body-background-hl-opacity: 0.16;
+
+    /* 侧栏 / 对话框 / 菜单：与编辑器同为纯白 */
+    --Sv--dialog-container: #ffffff;
+    --Sv-plugin-off-bg: #f7f7f8;
+    --Sv-menu-background: #ffffff;
+
+    /* 顶栏工作区、状态栏与 dock 激活态：Notion 蓝 */
+    --Sv-barWorkspace-background: #2383e2;
+    --Sv-barWorkspace-background-hover: #1e73c8;
+
+    /* 代码块与行内代码：Notion 暖灰代码块、字符串红行内码 */
+    --Sv-code-block-background: #f7f6f3;
+    --Sv-inline-code: #d0453e;
+    --b3-highlight-background: #fff3b0;
+    --b3-highlight-current-background: #f5c451;
+
+    /* 标签栏圆角：未激活页签极浅灰，激活页签与纯白编辑区连成一体 */
+    --Sv-tab-bar-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23f7f7f8'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23f7f7f8'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23f7f7f8'/></svg>");
+    --Sv-tab-bar-V-item-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C100 44.772 55.228 0 0 0H100V100z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  width='100%' height='100%' fill='%23ffffff'/></svg>");
+    --Sv-tab-bar-item-focus-after:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M100 100C44.772 100 0 55.228 0 0v100h100z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 100c55.228 0 100-44.772 100-100v100H0z' fill='%23ffffff'/></svg>"),
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><rect  y='0%' width='100%' height='80%' fill='%23ffffff'/></svg>");
+
+    /* 文字标注底色：Notion 经典色板 */
+    --b3-font-background1: #f1f1ef;
+    --b3-font-background2: #f8f8f7;
+    --b3-font-background3: #fdebec;
+    --b3-font-background4: #ebf1f5;
+    --b3-font-background5: #eee0da;
+    --b3-font-background6: #fadec9;
+    --b3-font-background7: #fbf3db;
+    --b3-font-background8: #edf3ec;
+    --b3-font-background9: #e6f3f5;
+    --b3-font-background10: #e7f3f8;
+    --b3-font-background11: #f6f3f9;
+    --b3-font-background12: #faf1f5;
+    --b3-font-background13: #fce8e6;
+
+    /* 页签透明：覆盖思源原生页签底色（hover surface / focus surface-light / 主色淡底） */
+    .layout-tab-bar .item,
+    .layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+    .layout-tab-bar .item--focus,
+    .layout__wnd--active .layout-tab-bar .item--focus {
+        background-color: transparent;
+    }
+
+    /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
+    body {
+        background-image: var(--b3-window-background-image);
+    }
+
+    /* 关闭 Wind 配色的纸张纹理叠加 */
+    body::before {
+        display: none;
+    }
+}

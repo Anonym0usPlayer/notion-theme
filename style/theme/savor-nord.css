@@ -62,6 +62,14 @@
     --b3-font-background12: #ebd6e3;
     --b3-font-background13: #ecd8d5;
 
+    /* 页签透明：覆盖思源原生页签底色（hover surface / focus surface-light / 主色淡底） */
+    .layout-tab-bar .item,
+    .layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+    .layout-tab-bar .item--focus,
+    .layout__wnd--active .layout-tab-bar .item--focus {
+        background-color: transparent;
+    }
+
     /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
     body {
         background-image: var(--b3-window-background-image);
@@ -70,7 +78,8 @@
     /* 关闭 Wind 配色的纸张纹理叠加 */
     body::before {
         display: none;
-    }}
+    }
+}
 
 :root[data-theme-mode="dark"][savor-theme="nord"] {
     /* 基础数 */
@@ -128,6 +137,14 @@
     --b3-font-background11: #443b57;
     --b3-font-background12: #4e3b49;
     --b3-font-background13: #543b40;
+
+    /* 页签透明：覆盖思源原生页签底色（hover surface / focus surface-light / 主色淡底） */
+    .layout-tab-bar .item,
+    .layout-tab-bar .item:hover:not(.item--focus):not(.item--readonly),
+    .layout-tab-bar .item--focus,
+    .layout__wnd--active .layout-tab-bar .item--focus {
+        background-color: transparent;
+    }
 
     /* 恢复思源「背景渐变」层：主题全局层将其 unset，仅本配色按原生方式还原 */
     body {

@@ -44,8 +44,9 @@
 @import url( style/theme/savor-wind.css);/* Wind 配色 */
 @import url( style/theme/savor-vscode.css);/* VSCode 配色 */
 @import url( style/theme/savor-nord.css);/* Nord 配色 */
-@import url( style/theme/savor-things.css);/* Things 配色 */
 @import url( style/theme/savor-macos.css);/* MacOS 配色 */
+@import url( style/theme/savor-white.css);/* White 配色 */
+@import url( style/theme/savor-things.css);/* Things 深色配色 */
 @import url( style/theme/savor-dark.css);/* Dark 配色 */
 @import url( style/theme/savor-vinegar.css);/* Vinegar 配色 */
 @import url( style/theme/savor-ocean.css);/* Ocean 配色 */
@@ -614,15 +615,6 @@
 
 	/* 边栏 */
     --Sv-dock-background: /*oklch(calc(var(--b3-theme-surface-base-l)*0.98) var(--b3-theme-surface-base-ch));*/ var(--Sv-theme-surface);
-
-    /* 左右下侧边栏与编辑区同色：浅色下面板跟随各配色自己的纸面色（--b3-theme-background），
-       避免 surface 底色让近白的侧栏发灰 */
-    .layout__dockl > .fn__flex,
-    .layout__dockr > .fn__flex,
-    .layout__dockb > .fn__flex,
-    #toolbar + .fn__flex {
-        background-color: var(--b3-theme-background);
-    }
     --Sv-dock-item-color: oklch(calc(var(--b3-theme-surface-base-l)*0.3) var(--b3-theme-surface-base-ch) / 0.4);
 
     --Sv-vertical-bg:oklch(calc(var(--b3-theme-surface-base-l)*0.3) var(--b3-theme-surface-base-ch) / 0.03);

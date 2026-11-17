@@ -11,8 +11,9 @@
 * Wind护眼颜色（低饱和度配色，面板图标减少50%的色彩）
 * VSCode浅色编辑器配色（VS Code Light+ 风格：纯白编辑区、经典蓝状态栏、VS 语法高亮，在明亮模式下使用）
 * Nord配色（官方 Nord 色板，浅色雪原与深色极夜各一，深色带 Nord 语法高亮）
-* Things配色（Things 3 风格，近白纸面与深黑纸面各一，Things 蓝强调）
 * MacOS配色（macOS 系统风格，灰白纸面与深灰纸面各一，systemBlue 强调）
+* Things深色配色（iOS 深色分层：#1c1c1e 纸面、#2c2c2e 面板、Things 蓝强调，在暗黑模式下使用）
+* White纯白配色（侧边栏与编辑器同为纯白，暖黑正文 + Notion 蓝，层次靠边框与阴影，在明亮模式下使用）
 * VSCode深色编辑器配色（Dark Modern：#1f1f1f 纸面、#181818 侧栏、Dark+ 语法高亮，在暗黑模式下使用）
 * Ocean颜色（对比强烈配色）
 * Mountain护眼颜色（柔和黑暗配色）
