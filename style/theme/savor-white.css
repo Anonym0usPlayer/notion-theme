@@ -41,14 +41,12 @@
         0 1px 3px rgba(0, 0, 0, 0.08),
         0 8px 20px rgba(0, 0, 0, 0.08);
 
-    /* 卡片全局 margin 为 0 2px 8px，顶部无间隙，1px 顶部描边被上边界压住无法显现；
-       给编辑区卡片留出 2px 顶部间隙（默认模式卡片为 .fn__flex，融合模式为 .layout-tab-container） */
-    body:not(.body--mobile,.body--window,.body--toolbar-hide) #layouts .layout__center>.fn__flex,
-    body:not(.body--mobile,.body--window,.body--toolbar-hide) #layouts .layout__center>.fn__flex-column>.fn__flex {
-        margin-top: 2px;
-    }
-    .body--toolbar-hide #layouts .layout__center .layout-tab-container {
-        margin-top: 2px;
+    /* 融合模式（隐藏顶栏）下顶部对齐：页签栏独占顶部约 35px 一行，
+       编辑区内容卡片（margin 0 2px 8px，顶部 0）紧贴其下；
+       左右侧栏整体下移 35.5px，使侧栏卡片顶部与编辑区内容顶部对齐 */
+    .body--toolbar-hide #layouts .layout__dockl,
+    .body--toolbar-hide #layouts .layout__dockr {
+        margin-top: 35.5px;
     }
 
     /* 代码块与行内代码：Notion 暖灰代码块、字符串红行内码 */
