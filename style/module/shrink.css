@@ -1,5 +1,13 @@
 /* ————————————————————侧栏面板———————————————————— */
 
+/* 融合模式（隐藏顶栏）下左右侧栏下移至页签栏下方，与编辑区内容顶部对齐。
+   覆盖思源原生的 var(--b3-ui-panel-height, 42px)（其规则带 :not(.layout--float)，
+   浮动侧栏会回落 42px 造成错位），此处含浮动侧栏、加 #layouts 提升特异性，所有配色生效 */
+body.body--toolbar-hide #layouts .layout__dockl,
+body.body--toolbar-hide #layouts .layout__dockr{
+    margin-top: 35.5px;
+}
+
 .layout__dockl,.layout__dockr,.layout__dockb{
     background-color: transparent;
     >.fn__flex{

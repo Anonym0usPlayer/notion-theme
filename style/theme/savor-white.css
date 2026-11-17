@@ -41,14 +41,6 @@
         0 1px 3px rgba(0, 0, 0, 0.08),
         0 8px 20px rgba(0, 0, 0, 0.08);
 
-    /* 融合模式（隐藏顶栏）下顶部对齐：页签栏独占顶部约 35px 一行，
-       编辑区内容卡片（margin 0 2px 8px，顶部 0）紧贴其下；
-       左右侧栏整体下移 35.5px，使侧栏卡片顶部与编辑区内容顶部对齐 */
-    .body--toolbar-hide #layouts .layout__dockl,
-    .body--toolbar-hide #layouts .layout__dockr {
-        margin-top: 35.5px;
-    }
-
     /* 代码块与行内代码：Notion 暖灰代码块、字符串红行内码 */
     --Sv-code-block-background: #f7f6f3;
     --Sv-inline-code: #d0453e;
