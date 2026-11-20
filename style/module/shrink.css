@@ -1,11 +1,18 @@
 /* ————————————————————侧栏面板———————————————————— */
 
-/* 融合模式（隐藏顶栏）下左右侧栏下移至页签栏下方，与编辑区内容顶部对齐。
-   覆盖思源原生的 var(--b3-ui-panel-height, 42px)（其规则带 :not(.layout--float)，
-   浮动侧栏会回落 42px 造成错位），此处含浮动侧栏、加 #layouts 提升特异性，所有配色生效 */
+/* 紧凑模式（data-ui-density=compact）下左右侧栏下移 35.5px，与页签栏下方编辑区内容顶部对齐，
+   含浮动侧栏（思源原生规则带 :not(.layout--float)，浮动侧栏回落 42px 造成错位）；
+   非紧凑模式不覆盖，保持思源原生 var(--b3-ui-panel-height, 42px)（原生页签栏高度恰为 42px，天然对齐） */
+html[data-ui-density=compact] body.body--toolbar-hide #layouts .layout__dockl,
+html[data-ui-density=compact] body.body--toolbar-hide #layouts .layout__dockr{
+    margin-top: 35px;
+}
+
+/* 非紧凑模式下左右侧栏（含浮动）下移 40px，覆盖思源原生的 var(--b3-ui-panel-height, 42px)；
+   紧凑模式由上方规则（特异性更高）生效 35.5px，不受本条影响 */
 body.body--toolbar-hide #layouts .layout__dockl,
 body.body--toolbar-hide #layouts .layout__dockr{
-    margin-top: 35.5px;
+    margin-top: 40px;
 }
 
 .layout__dockl,.layout__dockr,.layout__dockb{
