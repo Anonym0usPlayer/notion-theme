@@ -1,5 +1,6 @@
 /* Nord · 官方 Nord 色板配色
-   浅色取 Nord Snow Storm（#eceff4 纸面 + #2e3440 正文 + #5e81ac 冰川蓝），
+   浅色已参考 White 配色重构：Snow Storm 纸面（#eceff4 + #2e3440 正文 + #5e81ac 冰川蓝），
+   卡片式层次语言与 White 一致——Nord0 冷灰描边 + 双层投影让编辑区与侧栏卡片统一浮起。
    深色取 Nord Polar Night（#2e3440 纸面 + #d8dee9 雪文 + #88c0d0 冰蓝），
    深色块沿用 Nord 官方语法高亮（关键字 #81a1c1、字符串 #a3be8c、注释 #616e88）。
    明暗两个作用域共用 savor-theme="nord"，由 data-theme-mode 区分。 */
@@ -15,16 +16,37 @@
     /* 编辑区：Nord6 雪白（必须用 HEX 颜色） */
     --b3-theme-background: #eceff4;
 
-    /* 支持思源「背景渐变」：画布与纸面同色，光晕用 Nord9 冰蓝；
+    /* 支持思源「背景渐变」：界面底色用 Nord5 略深于纸面，光晕用 Nord9 冰蓝；
        自动模式的颜色由思源按工作空间名称生成，未设置时回退到此色 */
-    --b3-body-background: #eceff4;
+    --b3-body-background: #e5e9f0;
     --b3-body-background-hl: 210, 34%, 63%;
     --b3-body-background-hl-opacity: 0.16;
+
+    /* 界面底色（布局行 / 浮动面板外框）：Nord5，与纸面不一致，
+       让编辑区与侧边栏卡片（Snow Storm 纸面色）浮在其上 */
+    --Sv-dock-background: #e5e9f0;
 
     /* 面板 / 对话框 / 菜单 */
     --Sv--dialog-container: #e5e9f0;
     --Sv-plugin-off-bg: #dfe3ea;
     --Sv-menu-background: oklch(calc(var(--b3-theme-surface-base-l)*1.02) var(--b3-theme-surface-base-ch));
+
+    /* 卡片式布局（参考 White）：面板与纸面同为 Snow Storm 色系，
+       层次交给卡片——Nord0 冷灰描边 + 双层投影，编辑区与侧栏卡片统一浮起 */
+    --Sv-main-shadow:
+        0 0 0 1px rgba(46, 52, 64, 0.08),
+        0 1px 3px rgba(46, 52, 64, 0.08),
+        0 8px 20px rgba(46, 52, 64, 0.08);
+    --Sv-dock-shadow:
+        0 0 0 1px rgba(46, 52, 64, 0.08),
+        0 1px 3px rgba(46, 52, 64, 0.08),
+        0 8px 20px rgba(46, 52, 64, 0.08);
+
+    /* 左右侧边栏卡片背景与编辑区纸面一致（全局默认为 surface 蓝灰 #e5e9f0 系） */
+    .layout__dockl>.fn__flex,
+    .layout__dockr>.fn__flex {
+        background-color: var(--b3-theme-background);
+    }
 
     /* 顶栏工作区、状态栏与 dock 激活态：Nord10 冰川蓝 */
     --Sv-barWorkspace-background: #5e81ac;
