@@ -12,7 +12,7 @@ html[data-ui-density=compact] body.body--toolbar-hide #layouts .layout__dockr{
    紧凑模式由上方规则（特异性更高）生效 35.5px，不受本条影响 */
 body.body--toolbar-hide #layouts .layout__dockl,
 body.body--toolbar-hide #layouts .layout__dockr{
-    margin-top: 40px;
+    margin-top: 39px;
 }
 
 .layout__dockl,.layout__dockr,.layout__dockb{
