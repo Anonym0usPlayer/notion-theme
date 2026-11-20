@@ -1,0 +1,12 @@
+# 依赖与平台二进制（按需 npm install / pnpm install）
+node_modules/
+
+# 系统与编辑器垃圾文件
+.DS_Store
+*.DS_Store
+
+# WorkBuddy 项目内部数据
+.workbuddy/
+
+# 构建临时
+*.log
